@@ -75,6 +75,15 @@
     4. 下方則每 `5 分鐘` 打一次
     5. 按下 `CREATE`
 
+## Node.js 範例
+若想使用 JavaScript 建立簡易的 Line Bot，可參考倉庫根目錄的 `index.js`。此程式會回覆使用者傳來的文字。
+
+```bash
+node index.js
+```
+
+啟動後即可於 LINE 開發者後台設定 Webhook URL 進行測試。
+
 ## 指令
 在文字輸入框中直接輸入文字，即可與 ChatGPT 開始對話，而其他指令如下：
 
