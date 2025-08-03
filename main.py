@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-from flask import Flask, request, abort
+from flask import Flask, request, abort, render_template, redirect, url_for
 from linebot import (
     LineBotApi, WebhookHandler
 )
@@ -179,6 +179,23 @@ def handle_audio_message(event):
 @app.route("/", methods=['GET'])
 def home():
     return 'Hello World'
+
+
+@app.route("/contact", methods=['GET', 'POST'])
+def contact():
+    if request.method == 'POST':
+        # The form data can be processed here if needed
+        name = request.form.get('name')
+        email = request.form.get('email')
+        message = request.form.get('message')
+        logger.info(f"contact form submitted: {name}, {email}, {message}")
+        return redirect(url_for('thanks'))
+    return render_template('contact.html')
+
+
+@app.route("/thanks", methods=['GET'])
+def thanks():
+    return render_template('thanks.html')
 
 
 if __name__ == "__main__":
